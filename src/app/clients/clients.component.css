@@ -1,5 +1,6 @@
 .container {
   padding: 20px;
+  margin-bottom: 5%;
 }
 
 div {
@@ -17,4 +18,9 @@ div {
 
 .with-10{
     width: 10%;
+}
+
+#ct1{
+    display: flex;
+    justify-content: center;
 }

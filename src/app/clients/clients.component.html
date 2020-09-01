@@ -92,12 +92,15 @@
     
   </mat-table>
 
-  <div>
-    <a mat-raised-button routerLink="/editar">Agregar nuevo usuario</a>
+  <div id="ct1">
+    <div>
+      <a mat-raised-button routerLink="/editar">Agregar nuevo usuario</a>
+    </div>
 
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
-
+    <div>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
   </div>
   
