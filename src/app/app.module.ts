@@ -8,20 +8,22 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule }    from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule , MatRippleModule, MatSelectModule} from '@angular/material';
-import {MatProgressSpinnerModule,  } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientsComponent , DialogOverviewExampleDialog} from './clients/clients.component';
 import { EditarComponent } from './editar/editar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogSpinnerComponent } from './dialog-spinner/dialog-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     EditarComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatRippleModule,
     MatSelectModule
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog, DialogSpinnerComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
