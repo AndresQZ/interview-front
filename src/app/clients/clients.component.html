@@ -1,0 +1,103 @@
+<!-- <table mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let client"> {{client.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let client"> {{client.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellidoPaterno">
+    <th mat-header-cell *matHeaderCellDef> Apellido paterno </th>
+    <td mat-cell *matCellDef="let client"> {{client.apellidoPaterno}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ingresos">
+    <th mat-header-cell *matHeaderCellDef> Ingresos </th>
+    <td mat-cell *matCellDef="let client"> {{client.ingresos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaNacimiento">
+    <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento</th>
+    <td mat-cell *matCellDef="let client"> {{client.fechaNacimiento}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef> Editar </th>
+    <td mat-cell *matCellDef="let client" class="action-link"> 
+      <a routerLink="/editar/{{client.id}}" >Edit</a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <a (click)="openDialog('Delete',element)">Delete</a>  
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table> -->
+
+
+
+  <mat-table class="lessons-table mat-elevation-z8 container" [dataSource]="dataSource">
+  <div class="container">
+    <ng-container matColumnDef="id">
+        <div class="with-2" *matHeaderCellDef>id</div>
+        <div class="with-2" *matCellDef="let client">{{client.id}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="nombre">
+        <div class="with-5" *matHeaderCellDef>Nombre</div>
+        <div class="with-5" *matCellDef="let client">{{client.nombre}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="apellidoPaterno">
+        <div class="with-10" mat-header-cell *matHeaderCellDef> Apellido paterno </div>
+        <div class="with-10" mat-cell *matCellDef="let client"> {{client.apellidoPaterno}} </div>
+    </ng-container>
+  
+    <ng-container matColumnDef="ingresos">
+      <div class="with-5" mat-header-cell *matHeaderCellDef> Ingresos </div>
+      <div class="with-5" mat-cell *matCellDef="let client"> $ {{client.ingresos}} </div>
+    </ng-container>
+  
+    <ng-container matColumnDef="fechaNacimiento">
+      <div class="with-10" mat-header-cell *matHeaderCellDef> Fecha Nacimiento</div>
+      <div  class="with-10" mat-cell *matCellDef="let client"> {{client.fechaNacimiento}} </div>
+    </ng-container>
+  
+    <ng-container matColumnDef="Edit">
+      <div class="with-2" mat-header-cell *matHeaderCellDef> Editar </div>
+      <div mat-cell *matCellDef="let client" class="action-link with-2"> 
+        <a routerLink="/editar/{{client.id}}" >Edit</a>
+      </div>
+    </ng-container>
+  
+    <ng-container matColumnDef="Delete">
+      <div class="with-2" mat-header-cell *matHeaderCellDef> Eliminar </div>
+      <div mat-cell *matCellDef="let element" class="action-link with-2">
+        <a (click)="openDialog('Delete',element)">Delete</a>  
+      </div>
+    </ng-container>
+  </div>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    
+  </mat-table>
+
+  <div>
+    <a mat-raised-button routerLink="/editar">Agregar nuevo usuario</a>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  </div>
+  

@@ -1,0 +1,8 @@
+<!-- dialog-box.component.html -->
+<div mat-dialog-content>
+   <h3>¿Estas seguro que quieres eliminar el registro de {{localData.nombre}}</h3> 
+</div>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="doAction()"> SI</button>
+  <button mat-button (click)="closeDialog()" >No</button>
+</div>
