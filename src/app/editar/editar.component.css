@@ -1,9 +1,10 @@
-.example-container {
+.container {
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
   }
   
-  .example-container > * {
+  .container > * {
     width: 90%;
     margin: auto;
   }

@@ -1,4 +1,4 @@
-<form class="example-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <input matInput [(ngModel)]="name"  placeholder="Nombre" formControlName="name">
    <!--  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -15,7 +15,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput disabled [(ngModel)]="id" placeholder="id">
+    <input matInput [(ngModel)]="id" placeholder="id" formControlName="id">
   </mat-form-field>
 
   <mat-form-field>

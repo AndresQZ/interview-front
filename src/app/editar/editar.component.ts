@@ -44,7 +44,7 @@ export class EditarComponent implements OnInit {
       salary: new FormControl(''),
       postalCode: new FormControl('' ,[Validators.required, Validators.maxLength(6),Validators.minLength(6)]),
       fecha: new FormControl('', [Validators.required]),
-      id: new FormControl({disabled : true})
+      id: new FormControl({value: '', disabled: true})
     });
   
    }
@@ -57,7 +57,7 @@ export class EditarComponent implements OnInit {
 
   getId() {
     const id= +this.route.snapshot.paramMap.get('id');
-    console.log(">>> id - client" + id);
+    console.log(">>> id - client " + id);
     if(id !=null && id !== undefined && id !== 0) {
       this.updateRegister = true;
       this.getUser(id);
@@ -85,7 +85,7 @@ export class EditarComponent implements OnInit {
 
   public saveOrUpdated() : void {
     this.openDialog();
-    console.log(">>> indicator updateRegister" + this.updateRegister);
+    console.log(">>> indicator updateRegister :" + this.updateRegister);
     if(this.updateRegister) {
       this.buildObjectclient();
       this.update();
@@ -106,7 +106,6 @@ export class EditarComponent implements OnInit {
      this.client.codigoPostal = this.postalCode;
      this.client.fechaNacimiento = this.fecha;
      this.client.id = this.id;
-     console.log(JSON.stringify(this.client));
   }
 
 
@@ -128,9 +127,11 @@ export class EditarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result.event == 'ok'){
-       
-      }
+      this.location.back();
     });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
   }
 }

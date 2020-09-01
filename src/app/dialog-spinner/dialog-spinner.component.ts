@@ -18,7 +18,9 @@ export class DialogSpinnerComponent  {
   private localData : any;
 
   constructor(public dialogRef: MatDialogRef<DialogSpinnerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { 
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+
+      this.showSpinner = true;
       this._timeOut();
     }
 
