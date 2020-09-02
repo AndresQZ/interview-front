@@ -2,7 +2,6 @@ import { Component, OnInit, Optional } from '@angular/core';
 import {UsersService} from '../services/users.service';
 import { ActivatedRoute}  from '@angular/router';
 import { Client } from '../model/Client';
-import { ClientsComponent } from '../clients/clients.component';
 import { Location}  from '@angular/common';
 import {FormControl, Validators, FormGroup , FormBuilder} from '@angular/forms';
 import { DialogSpinnerComponent } from '../dialog-spinner/dialog-spinner.component';

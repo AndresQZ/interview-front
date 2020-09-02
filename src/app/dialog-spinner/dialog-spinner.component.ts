@@ -12,10 +12,7 @@ export interface DialogData {
   styleUrls: ['./dialog-spinner.component.css']
 })
 export class DialogSpinnerComponent  {
-
-
   showSpinner = false;
-  private localData : any;
 
   constructor(public dialogRef: MatDialogRef<DialogSpinnerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {

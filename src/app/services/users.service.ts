@@ -4,9 +4,7 @@ import {Client} from '../model/Client';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { GenericResponse } from '../model/GenericResponse';
-
 import { environment} from '../../environments/environment';
-
 
 
 const httpOptions = {
@@ -19,8 +17,6 @@ const httpOptions = {
 })
 export class UsersService {
   private articleUrl = '/client/v0/';
-  private saveArticleUrl= '/article/v0/create';
-  private getBraceletsUrl = '/article/v0/';
   private saveUserUrl = '/client/v0/';
   private deleteUrl = '/client/v0/';
   private host = environment.host;
@@ -66,10 +62,6 @@ export class UsersService {
    
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-   
-      // TODO: better job of transforming error for user consumption
-   
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
