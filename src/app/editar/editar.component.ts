@@ -20,11 +20,13 @@ export class EditarComponent implements OnInit {
   public name: String;
   public lastName:String;
   public lastMother: String;
-  public id: Number;
-  public salary:Number;
-  public postalCode: Number;
+  public id: number;
+  public salary:number;
+  public postalCode: number;
   public fecha: Date;
   showSpinner = false;
+  minDate = new Date(1920, 0, 1);
+  maxDate = this._getDateBeginning();
 
   private client : Client;
   private updateRegister : Boolean = false;
@@ -38,9 +40,9 @@ export class EditarComponent implements OnInit {
               public dialog: MatDialog) {
     
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required , Validators.pattern('[a-zA-Z ]*')]),
-      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      lastMother: new FormControl('',[Validators.pattern('[a-zA-Z ]*')]),
+      name: new FormControl('', [Validators.required , Validators.pattern('[a-zA-ZñÑ ]*')]),
+      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-ZñÑ ]*')]),
+      lastMother: new FormControl('',[Validators.pattern('[a-zA-ZñÑ ]*')]),
       salary: new FormControl(''),
       postalCode: new FormControl('' ,[Validators.required, Validators.maxLength(6),Validators.minLength(6)]),
       fecha: new FormControl('', [Validators.required]),
@@ -133,5 +135,53 @@ export class EditarComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+  }
+
+
+    /**
+   * @param
+   * @name _getDateBeginning
+   * @returns Date with format yyyy-mm-dd
+   */
+  _getDateBeginning() {
+    let currentDate = this._getDateCurent();
+    let [...partOfDate] = this._getPartsOfDate(currentDate);
+    let [day, month, year] = partOfDate;
+    return `${year}-${month}-${day}`
+  }
+
+  /**
+   * @name _getDateExpiration
+   * @param {yearsToIncrease} number to increment to a year current
+   * @returns Date with format yyyy-mm-dd
+   */
+  _getDateExpiration(yearsToIncrease) {
+    let currentDate = this._getDateCurent();
+    let [...partOfDate] = this._getPartsOfDate(currentDate);
+    let [day, month, year] = partOfDate;
+    return `${year+yearsToIncrease}-${month}-${day}`;
+  }
+
+  /**
+   * @name _getDateCurent
+   * @returns Data with formart standart
+   */
+  _getDateCurent() : Date{
+    var dateToday = new Date();
+    return dateToday
+  }
+
+
+  /**
+   * @name _getPartsOfDate
+   * @param {Date} currentDate
+   * @returns Array with format
+   */
+  _getPartsOfDate(currentDate) {
+    let partOfDate = [];
+    partOfDate.push(String(currentDate.getDate()).padStart(2, '0'));
+    partOfDate.push(String(currentDate.getMonth() + 1).padStart(2, '0'));
+    partOfDate.push(currentDate.getFullYear());
+    return partOfDate;
   }
 }

@@ -1,9 +1,9 @@
 export class Client {
-    id: Number;
+    id: number;
     apellidoPaterno: String;
     apellidoMaterno: String;
     nombre: String;
-    ingresos : Number;
+    ingresos : number;
     fechaNacimiento: Date;
-    codigoPostal: Number
+    codigoPostal: number
 }
