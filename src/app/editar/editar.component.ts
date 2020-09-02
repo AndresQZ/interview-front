@@ -40,11 +40,11 @@ export class EditarComponent implements OnInit {
               public dialog: MatDialog) {
     
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required , Validators.pattern('[a-zA-ZñÑ ]*')]),
-      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-ZñÑ ]*')]),
+      name: new FormControl('', [Validators.required , Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*')]),
+      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*')]),
       lastMother: new FormControl('',[Validators.pattern('[a-zA-ZñÑ ]*')]),
       salary: new FormControl(''),
-      postalCode: new FormControl('' ,[Validators.required, Validators.maxLength(6),Validators.minLength(6)]),
+      postalCode: new FormControl('' ,[Validators.maxLength(6),Validators.minLength(6), Validators.required, Validators.pattern("^[0-9]*$")]),
       fecha: new FormControl('', [Validators.required]),
       id: new FormControl({value: '', disabled: true})
     });
