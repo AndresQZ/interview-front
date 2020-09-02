@@ -20,27 +20,40 @@ export class ClientsComponent implements OnInit {
 
 
   public clients: Client[];
-  dataSource = new MatTableDataSource(this.clients);
+  public dataSource;
   public columnsToDisplay : string[]  = [ 'id', 'nombre', 'apellidoPaterno' , 'ingresos', 'fechaNacimiento' , 'Edit' , 'Delete'];
-  public columnsToDisplays : string[]  = [ 'id', 'nombre'];
 
-
-  constructor(private usersService: UsersService, public dialog: MatDialog) { }
-
-  ngOnInit() {
-  this.getUser();
+  constructor(private usersService: UsersService, public dialog: MatDialog) {
+    this.dataSource = new  MatTableDataSource(this.clients);
+    this.configurefilterPredicate();
   }
 
+  ngOnInit() {   
+     this.getUser();  
+  }
+
+
   getUser(): void {
-    this.usersService.getUser().subscribe(response =>{ 
+    this.usersService.getUser().subscribe(response => { 
       this.clients = response
-      this.dataSource = new MatTableDataSource(this.clients);
+      this.dataSource.data = this.clients;
      });
   }
 
 
+  configurefilterPredicate() {
+    this.dataSource.filterPredicate = function (data, filter: string) : boolean {
+      console.log("inside filterPredicate>>");
+      return data.id.toString() === filter;
+     };
+  }
+
+
+  
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+     console.log("inside applyFilter>>");
+    filterValue = filterValue.trim().toLowerCase()
+    this.dataSource.filter = filterValue;
   }
 
   openDialog(action,obj) {
@@ -58,7 +71,6 @@ export class ClientsComponent implements OnInit {
        });
       
       }else if(result.event == 'Update'){
-       // this.updateRowData(result.data);
       }
     });
   }
@@ -68,11 +80,6 @@ export class ClientsComponent implements OnInit {
    console.log("user deleted >>>");
    this.getUser();
   }
-
-  public setClients(Clients : Client[]) : void{
-    this.clients = Clients;
-  }
-
 }
 
 
