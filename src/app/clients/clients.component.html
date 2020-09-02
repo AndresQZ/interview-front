@@ -53,8 +53,8 @@
     </ng-container>
   
     <ng-container matColumnDef="nombre">
-        <div class="with-5" *matHeaderCellDef>Nombre</div>
-        <div class="with-5" *matCellDef="let client">{{client.nombre}}</div>
+        <div class="with-10" *matHeaderCellDef>Nombre</div>
+        <div class="with-10" *matCellDef="let client">{{client.nombre}}</div>
     </ng-container>
 
     <ng-container matColumnDef="apellidoPaterno">
@@ -64,12 +64,12 @@
   
     <ng-container matColumnDef="ingresos">
       <div class="with-10" mat-header-cell *matHeaderCellDef> Ingresos </div>
-      <div class="with-10" mat-cell *matCellDef="let client"> $ {{client.ingresos}} </div>
+      <div class="with-10" mat-cell *matCellDef="let client"> {{client.ingresos | currency }} </div>
     </ng-container>
   
     <ng-container matColumnDef="fechaNacimiento">
       <div class="with-10" mat-header-cell *matHeaderCellDef> Fecha Nacimiento</div>
-      <div  class="with-10" mat-cell *matCellDef="let client"> {{client.fechaNacimiento}} </div>
+      <div  class="with-10" mat-cell *matCellDef="let client"> {{client.fechaNacimiento | date:"yyyy/MM/dd"  }} </div>
     </ng-container>
   
     <ng-container matColumnDef="Edit">
@@ -99,7 +99,7 @@
 
     <div>
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar usuario">
       </mat-form-field>
     </div>
   </div>

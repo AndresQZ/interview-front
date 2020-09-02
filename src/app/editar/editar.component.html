@@ -1,13 +1,22 @@
 <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <input matInput [(ngModel)]="name"  placeholder="Nombre" formControlName="name">
-   <!--  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-      Please enter name
-    </mat-error> -->
-  </mat-form-field>
+    <mat-error *ngIf="form.controls.name.hasError('pattern')">
+      Solo permitido acentos
+    </mat-error>
+    <mat-error *ngIf="form.controls.name.hasError('required')">
+     Ingresa un nombre
+    </mat-error>
+ </mat-form-field>
 
   <mat-form-field>
     <input matInput [(ngModel)]="lastName"  placeholder="Apellido Paterno" formControlName="lastName">
+    <mat-error *ngIf="form.controls.lastName.hasError('pattern')">
+      Solo permitido acentos
+    </mat-error>
+    <mat-error *ngIf="form.controls.lastName.hasError('required')">
+     Ingresa apellido
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -24,17 +33,37 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="postalCode"   placeholder="Codigo Postal" formControlName="postalCode">
+    <input matInput [(ngModel)]="postalCode"   placeholder="Codigo Postal" type="number" formControlName="postalCode">
+    <mat-error *ngIf="form.controls.postalCode.hasError('pattern')">
+      Solo permitido acentos
+    </mat-error>
+    <mat-error *ngIf="form.controls.postalCode.hasError('required')">
+     Ingresa codigo postal (6 digitos)
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="picker"  [(ngModel)]="fecha" placeholder="Fecha de Nacimiento" formControlName="fecha">
+    <input matInput [matDatepicker]="picker"  [min]="minDate" [max]="maxDate" [(ngModel)]="fecha" placeholder="Fecha de Nacimiento" formControlName="fecha">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.controls.fecha.hasError('pattern')">
+      Solo permitido acentos
+    </mat-error>
+    <mat-error *ngIf="form.controls.fecha.hasError('required')">
+     Ingresa fecha de Nacimiento
+    </mat-error>
   </mat-form-field> 
 
-  <button mat-stroked-button color="primary"  [disabled]="!form.valid" (click)="saveOrUpdated()">Aceptar</button>
-  <button mat-stroked-button color="accent" routerLink="/">Cancelar</button>
+
+  <div class="wrap-form">
+  <div>
+    <button mat-stroked-button color="primary"  [disabled]="!form.valid" (click)="saveOrUpdated()">Aceptar</button>
+  </div>
+  <div>
+    <button mat-stroked-button color="accent" routerLink="/">Cancelar</button>
+  </div>
+ </div>
+  
 </form>
 
   
